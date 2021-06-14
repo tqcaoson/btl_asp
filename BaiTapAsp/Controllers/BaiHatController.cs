@@ -25,6 +25,11 @@ namespace BaiTapAsp.Controllers
             return View();
         }
 
+        public ActionResult addBH()
+        {
+            return View();
+        }
+
         [HttpPost]
         public ActionResult addBH (BaiHat bh) {
             return View();
