@@ -10,48 +10,61 @@
 <p>
     @Html.ActionLink("Create New", "addBH")
 </p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Id_nhacsi)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Id_dongnhac)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Ten_bai_hat)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.NgayDang)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.LuotNghe)
-        </th>
-        <th></th>
-    </tr>
+<form action="/searchBH" method="POST">
+    <div class="form-group">
+        <div class="col-md-10">
+            <input type="text" name="searchBH" />
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="search" class="btn btn-default" />
+        </div>
+    </div>
+</form>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id_nhacsi)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Id_dongnhac)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ten_bai_hat)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NgayDang)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LuotNghe)
+            </th>
+            <th></th>
+        </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Id_nhacsi)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Id_dongnhac)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Ten_bai_hat)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.NgayDang)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.LuotNghe)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "editBH", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "deleteBH", new { id=item.Id })
-        </td>
-    </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id_nhacsi)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id_dongnhac)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Ten_bai_hat)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NgayDang)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LuotNghe)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "editBH", new { id = item.Id }) |
+                    @Html.ActionLink("Delete", "deleteBH", new { id = item.Id })
+                </td>
+            </tr>
+        }
 
-</table>
+    </table>
