@@ -1,51 +1,40 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
-namespace  BaiTapAsp.Models
+namespace BaiTapAsp.Models
 {
     public class NhacSi
     {
-        public int id { get; set; }
-        [Required(ErrorMessage ="Vui lòng nhập họ và tên nhạc sĩ")]
-        [Display(Name = "Tên nhạc sĩ")]
-        public string fullName { get; set; }
-        [Required(ErrorMessage = "Vui lòng chọn ảnh nhạc sĩ")]
-        [Display(Name = "Hình ảnh")]
-        public string image { get; set; }
-        [Required(ErrorMessage = "Vui lòng chọn ngày tháng năm sinh")]
-        [Display(Name = "Ngày sinh")]
-        public string dateofbirth { get; set; }
-        [Required(ErrorMessage = "Vui lòng nhập quê quán")]
-        [Display(Name = "Quê quán")]
-        public string address { get; set; }
+        public int Id { get; set; }
+        public int Id_nhacsi { get; set; }
+        public int Id_dongnhac { get; set; }
+        public string Ten_bai_hat { get; set; }
+        public DateTime NgayDang { get; set; }
+        public int LuotNghe { get; set; }
 
-        // thuoc tinh de upload hinh len nhung k luu
-        [NotMapped]
-        public HttpPostedFileBase Imageupload { get; set; }
-        public NhacSi()
+        public BaiHat ()
         {
-            image = "~/Content/images/add.jpg";
         }
 
-        public NhacSi(int id, string fullName, string image, string dateofbirth, string address)
+        public BaiHat (int id, int id_ns, int id_dn, string tenbh, DateTime ngay, int luotnghe)
         {
-            this.id = id;
-            this.fullName = fullName;
-            this.image = image;
-            this.dateofbirth = dateofbirth;
-            this.address = address;
+            this.Id = id;
+            this.Id_nhacsi = id_ns;
+            this.Id_dongnhac = id_dn;
+            this.Ten_bai_hat = tenbh;
+            this.NgayDang = ngay;
+            this.LuotNghe = luotnghe;
         }
 
-        public NhacSi(string fullName, string image, string dateofbirth, string address)
+        public BaiHat (int id_ns, int id_dn, string tenbh, DateTime ngay, int luotnghe)
         {
-            this.fullName = fullName;
-            this.image = image;
-            this.dateofbirth = dateofbirth;
-            this.address = address;
+            this.Id_nhacsi = id_ns;
+            this.Id_dongnhac = id_dn;
+            this.Ten_bai_hat = tenbh;
+            this.NgayDang = ngay;
+            this.LuotNghe = luotnghe;
         }
     }
 }
