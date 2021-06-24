@@ -4,8 +4,8 @@ using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using MusicManagement.Models;
-namespace MusicManagement.Controllers
+using BaiTapAsp.Models;
+namespace BaiTapAsp.Controllers
 {
     public class NhacSiController : Controller
     {
