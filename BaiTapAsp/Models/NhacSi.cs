@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
-namespace MusicManagement.Models
+namespace BaiTapAsp.Models
 {
     public class NhacSi
     {
