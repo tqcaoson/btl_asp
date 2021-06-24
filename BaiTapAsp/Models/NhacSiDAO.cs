@@ -5,7 +5,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 
-namespace MusicManagement.Models
+namespace BaiTapAsp.Models
 {
     public class NhacSiDAO
     {
