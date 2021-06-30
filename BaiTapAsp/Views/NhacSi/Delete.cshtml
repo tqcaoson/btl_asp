@@ -1,4 +1,4 @@
-﻿@model BaiTapAsp.Models.NhacSi
+@model BaiTapAsp.Models.NhacSi
 
 @{
     ViewBag.Title = "Delete";
@@ -45,8 +45,7 @@
 
     </dl>
 
-    @using (Html.BeginForm())
-    {
+    @using (Html.BeginForm()) {
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
@@ -55,3 +54,4 @@
         </div>
     }
 </div>
+
