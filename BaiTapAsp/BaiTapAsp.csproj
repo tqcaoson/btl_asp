@@ -186,6 +186,8 @@
     <Content Include="Views\NhacSi\Delete.cshtml" />
     <Content Include="Views\NhacSi\Edit.cshtml" />
     <Content Include="Views\DongNhac\Index.cshtml" />
+    <Content Include="Views\DongNhac\Add.cshtml" />
+    <Content Include="Views\DongNhac\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
