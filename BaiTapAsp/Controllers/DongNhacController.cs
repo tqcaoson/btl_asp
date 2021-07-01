@@ -15,5 +15,32 @@ namespace BaiTapAsp.Controllers
 			List<DongNhac> lists = nhacsidao.getAllDongNhac();
             return View(lists);
         }
+
+        // GET: DongNhac/Add/
+        public ActionResult Add()
+        {
+            return View();
+        }
+
+
+        // POST: DongNhac/Add/
+        [HttpPost]
+        public ActionResult Add(DongNhac dn)
+        {
+            return Redirect("/DongNhac");
+        }
+
+        // GET: DongNhac/Edit/
+        public ActionResult Edit(int id)
+        {
+            return View();
+        }
+
+        // POST: DongNhac/Edit/
+        [HttpPost]
+        public ActionResult Edit(DongNhac dn)
+        {
+            return Redirect("/DongNhac");
+        }
     }
 }
