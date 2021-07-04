@@ -9,38 +9,45 @@ namespace BaiTapAsp.Controllers
 {
     public class DongNhacController : Controller
     {
-        DongNhacDAO nhacsidao = new DongNhacDAO();
+        DongNhacDAO dongnhacdao = new DongNhacDAO();
         public ActionResult Index()
         {
-			List<DongNhac> lists = nhacsidao.getAllDongNhac();
+			List<DongNhac> lists = dongnhacdao.getAllDongNhac();
             return View(lists);
         }
 
         // GET: DongNhac/Add/
-        public ActionResult Add()
+        public ActionResult Create()
         {
             return View();
         }
 
-
-        // POST: DongNhac/Add/
         [HttpPost]
-        public ActionResult Add(DongNhac dn)
+        public ActionResult Create(DongNhac dn)
         {
+            dongnhacdao.insertDongNhac(dn);
             return Redirect("/DongNhac");
         }
 
         // GET: DongNhac/Edit/
         public ActionResult Edit(int id)
         {
-            return View();
+            DongNhac dn = dongnhacdao.getDongNhacByID(id);
+            return View(dn);
         }
 
         // POST: DongNhac/Edit/
         [HttpPost]
         public ActionResult Edit(DongNhac dn)
         {
+            dongnhacdao.updateDongNhac(dn);
             return Redirect("/DongNhac");
         }
+
+        public ActionResult Delete(int id)
+		{
+            dongnhacdao.deleteDongNhac(id);
+            return Redirect("/DongNhac");
+		}
     }
 }
