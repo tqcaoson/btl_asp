@@ -17,7 +17,7 @@ namespace BaiTapAsp.Controllers
 
             if (!string.IsNullOrEmpty(name_find))
             {
-                listNhacSi = nhacsidao.getNhacSiByName(name_find);
+                listNhacSi = nhacsidao.getNhacSiByTen_nhacsi(name_find);
             }
 
             return View(listNhacSi);

@@ -127,7 +127,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="ModelShow\BaiHatShow.cs" />
     <Compile Include="Models\BaiHat.cs" />
+    <Compile Include="Models\BaiHatDAO.cs" />
     <Compile Include="Models\DBConnection.cs" />
     <Compile Include="Models\DongNhac.cs" />
     <Compile Include="Models\DongNhacDAO.cs" />

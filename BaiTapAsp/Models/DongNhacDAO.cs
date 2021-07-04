@@ -20,7 +20,7 @@ namespace BaiTapAsp.Models
             List<DongNhac> listNhacSi = new List<DongNhac>();
             try
             {
-                string sql = "select * from DongNhac";           
+                string sql = "select * from Dong_nhac";           
                 DataTable dt = new DataTable();
                 SqlConnection con = db.getConnection();
                 SqlDataAdapter da = new SqlDataAdapter(sql, con);
@@ -30,8 +30,8 @@ namespace BaiTapAsp.Models
                 DongNhac ns;
                 for (int i = 0; i < dt.Rows.Count; i++)
                 {
-                    int ID = Convert.ToInt32(dt.Rows[i]["id"].ToString());
-                    String tenDongNhac = dt.Rows[i]["tendongnhac"].ToString();
+                    int ID = Convert.ToInt32(dt.Rows[i]["Id"].ToString());
+                    String tenDongNhac = dt.Rows[i]["Ten_dongnhac"].ToString();
                     ns = new DongNhac(ID, tenDongNhac);
                     listNhacSi.Add(ns);
                 }
