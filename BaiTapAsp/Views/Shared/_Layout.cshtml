@@ -21,10 +21,22 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("BaiHat", "showBH", "BaiHat")</li>
-                    <li>@Html.ActionLink("NhacSi", "Index", "NhacSi")</li>
-                    <li>@Html.ActionLink("DongNhac", "Index", "DongNhac")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    @if (Session["username"] != null)
+                    {
+                        <li>@Html.ActionLink("BaiHat", "showBH", "BaiHat")</li>
+                        <li>@Html.ActionLink("NhacSi", "Index", "NhacSi")</li>
+                        <li>@Html.ActionLink("DongNhac", "Index", "DongNhac")</li>
+                        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                        <li>@Html.ActionLink("LogOut", "LogOut", "Auth")</li>
+                    }
+                    }
+                    @if (Session["username"] == null)
+                    {
+                        <li>@Html.ActionLink("Login", "DangNhap", "Auth")</li>
+                        <li>@Html.ActionLink("Signin", "DangKy", "Auth")</li>
+                    }
+
+                    </li>
                 </ul>
             </div>
         </div>
