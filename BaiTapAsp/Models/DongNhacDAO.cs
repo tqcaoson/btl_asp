@@ -40,6 +40,58 @@ namespace BaiTapAsp.Models
                 Console.WriteLine("error getAllDongNhac: " + ex.Message);
             }
             return listNhacSi;
-    }
+        }
+
+        public void insertDongNhac(DongNhac dn)
+        {
+            string sql = "insert into Dong_nhac (Ten_dongnhac) values (N'" + dn.TenDongNhac + "')";
+            SqlConnection con = db.getConnection();
+            SqlCommand cmd = new SqlCommand(sql, con);
+            con.Open();
+            cmd.ExecuteNonQuery();
+            cmd.Dispose();
+            con.Close();
+        }
+
+        public void updateDongNhac(DongNhac ns)
+        {
+            string sql = "update Dong_nhac set Ten_dongnhac = N'" + ns.TenDongNhac + "' where Id = " + ns.Id;
+
+            SqlConnection con = db.getConnection();
+            SqlCommand cmd = new SqlCommand(sql, con);
+            con.Open();
+            cmd.ExecuteNonQuery();
+            cmd.Dispose();
+            con.Close();
+        }
+
+        public DongNhac getDongNhacByID(int id)
+        {
+            string sql = "select * from Dong_nhac where Id = " + id;
+            DataTable dt = new DataTable();
+            SqlConnection con = db.getConnection();
+            SqlDataAdapter da = new SqlDataAdapter(sql, con);
+            con.Open();
+            da.Fill(dt);
+            con.Close();
+            DongNhac dn;
+            int i = 0;
+            int ID = Convert.ToInt32(dt.Rows[i]["Id"].ToString());
+            String TenDongNhac = dt.Rows[i]["Ten_dongnhac"].ToString();
+            dn = new DongNhac(ID, TenDongNhac);
+            return dn;
+
+        }
+
+        public void deleteDongNhac(int id)
+        {
+            string sql = "delete from Dong_nhac where Id =" + id;
+            SqlConnection con = db.getConnection();
+            SqlCommand cmd = new SqlCommand(sql, con);
+            con.Open();
+            cmd.ExecuteNonQuery();
+            cmd.Dispose();
+            con.Close();
+        }
     }
 }

@@ -120,6 +120,7 @@
     <Compile Include="App_Start\FilterConfig2.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\RouteConfig2.cs" />
+    <Compile Include="Controllers\AuthController.cs" />
     <Compile Include="Controllers\BaiHatController.cs" />
     <Compile Include="Controllers\DongNhacController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -127,9 +128,8 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="ModelShow\BaiHatShow.cs" />
+    <Compile Include="Models\AuthDAO.cs" />
     <Compile Include="Models\BaiHat.cs" />
-    <Compile Include="Models\BaiHatDAO.cs" />
     <Compile Include="Models\DBConnection.cs" />
     <Compile Include="Models\DongNhac.cs" />
     <Compile Include="Models\DongNhacDAO.cs" />
@@ -184,10 +184,14 @@
     <Content Include="Views\BaiHat\addBH.cshtml" />
     <Content Include="Views\NhacSi\Index.cshtml" />
     <Content Include="Views\NhacSi\Details.cshtml" />
-    <Content Include="Views\NhacSi\Create.cshtml" />
     <Content Include="Views\NhacSi\Delete.cshtml" />
     <Content Include="Views\NhacSi\Edit.cshtml" />
     <Content Include="Views\DongNhac\Index.cshtml" />
+    <Content Include="Views\DongNhac\Edit.cshtml" />
+    <Content Include="Views\Auth\DangNhap.cshtml" />
+    <Content Include="Views\Auth\DangKy.cshtml" />
+    <Content Include="Views\NhacSi\Create.cshtml" />
+    <Content Include="Views\DongNhac\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

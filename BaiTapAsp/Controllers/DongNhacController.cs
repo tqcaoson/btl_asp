@@ -7,40 +7,73 @@ using BaiTapAsp.Models;
 
 namespace BaiTapAsp.Controllers
 {
-    public class DongNhacController : Controller
-    {
-        DongNhacDAO nhacsidao = new DongNhacDAO();
-        public ActionResult Index()
-        {
-			List<DongNhac> lists = nhacsidao.getAllDongNhac();
-            return View(lists);
-        }
+	public class DongNhacController : Controller
+	{
+		DongNhacDAO dongnhacdao = new DongNhacDAO();
+		public ActionResult Index()
+		{
+			if (Session["username"] == null)
+				return Redirect("/Auth/DangNhap");
+			List<DongNhac> lists = dongnhacdao.getAllDongNhac();
+			return View(lists);
+		}
 
-        // GET: DongNhac/Add/
-        public ActionResult Add()
-        {
-            return View();
-        }
+		// GET: DongNhac/Add/
+		public ActionResult Create()
+		{
+			if (Session["username"] == null)
+				return Redirect("/Auth/DangNhap");
+			return View();
+		}
 
+		[HttpPost]
+		public ActionResult Create(DongNhac dn)
+		{
+			if (Session["username"] == null)
+				return Redirect("/Auth/DangNhap");
+			if (ModelState.IsValid)
+			{
+				dongnhacdao.insertDongNhac(dn);
+				return Redirect("/DongNhac");
+			}
+			else
+			{
+				return View();
+			}
+		}
 
-        // POST: DongNhac/Add/
-        [HttpPost]
-        public ActionResult Add(DongNhac dn)
-        {
-            return Redirect("/DongNhac");
-        }
+		// GET: DongNhac/Edit/
+		public ActionResult Edit(int id)
+		{
+			if (Session["username"] == null)
+				return Redirect("/Auth/DangNhap");
+			DongNhac dn = dongnhacdao.getDongNhacByID(id);
+			return View(dn);
+		}
 
-        // GET: DongNhac/Edit/
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
+		// POST: DongNhac/Edit/
+		[HttpPost]
+		public ActionResult Edit(DongNhac dn)
+		{
+			if (Session["username"] == null)
+				return Redirect("/Auth/DangNhap");
+			if (ModelState.IsValid)
+			{
+				dongnhacdao.updateDongNhac(dn);
+				return Redirect("/DongNhac");
+			}
+			else
+			{
+				return View();
+			}
+		}
 
-        // POST: DongNhac/Edit/
-        [HttpPost]
-        public ActionResult Edit(DongNhac dn)
-        {
-            return Redirect("/DongNhac");
-        }
-    }
+		public ActionResult Delete(int id)
+		{
+			if (Session["username"] == null)
+				return Redirect("/Auth/DangNhap");
+			dongnhacdao.deleteDongNhac(id);
+			return Redirect("/DongNhac");
+		}
+	}
 }
