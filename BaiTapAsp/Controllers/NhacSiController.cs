@@ -12,6 +12,8 @@ namespace BaiTapAsp.Controllers
         // GET: NhacSi
         public ActionResult Index(string name_find)
         {
+            if (Session["username"] == null)
+                return Redirect("/Auth/DangNhap");
             NhacSiDAO nhacsidao = new NhacSiDAO();
             List<NhacSi> listNhacSi = nhacsidao.getAllNhacSi();
 
