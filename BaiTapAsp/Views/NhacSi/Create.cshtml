@@ -1,4 +1,4 @@
-﻿@model BaiTapAsp.Models.NhacSi
+@model BaiTapAsp.Models.NhacSi
 
 @{
     ViewBag.Title = "Create";
@@ -8,10 +8,10 @@
 <h2>Create</h2>
 
 
-@using (Html.BeginForm("Create", "NhacSi", FormMethod.Post, new { enctype = "multipart/form-data" }))
+@using (Html.BeginForm("Create","NhacSi",FormMethod.Post,new { enctype="multipart/form-data"}))
 {
     @Html.AntiForgeryToken()
-
+    
     <div class="form-horizontal">
         <h4>NhacSi</h4>
         <hr />
@@ -27,7 +27,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.image, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                <img src="@Url.Content(Model.image)" style="height:200px; width:200px; margin:10px" id="previewImage" />
+                <img src="@Url.Content(Model.image)" style="height:200px; width:200px; margin:10px" id="previewImage"/>
                 <input type="file" name="Imageupload" onchange="ShowImagePreview(this, document.getElementById('previewImage'))" />
                 @Html.ValidationMessageFor(model => model.image, "", new { @class = "text-danger" })
             </div>
@@ -36,8 +36,8 @@
         <div class="form-group">
             @Html.LabelFor(model => model.dateofbirth, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-
-                <input type="date" name="dateofbirth" />
+                
+                <input type="date" name="dateofbirth"/>
                 @Html.ValidationMessageFor(model => model.dateofbirth, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -65,3 +65,4 @@
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }
+
