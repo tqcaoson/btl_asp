@@ -1,15 +1,16 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
+
 namespace BaiTapAsp.Models
 {
     public class NhacSi
     {
         public int id { get; set; }
-        [Required(ErrorMessage = "Vui lòng nhập họ và tên nhạc sĩ")]
+        [Required(ErrorMessage ="Vui lòng nhập họ và tên nhạc sĩ")]
         [Display(Name = "Tên nhạc sĩ")]
         public string fullName { get; set; }
         [Required(ErrorMessage = "Vui lòng chọn ảnh nhạc sĩ")]
