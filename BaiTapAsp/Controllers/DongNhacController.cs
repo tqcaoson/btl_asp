@@ -10,11 +10,20 @@ namespace BaiTapAsp.Controllers
 	public class DongNhacController : Controller
 	{
 		DongNhacDAO dongnhacdao = new DongNhacDAO();
-		public ActionResult Index()
+		public ActionResult Index(string q)
 		{
 			if (Session["username"] == null)
 				return Redirect("/Auth/DangNhap");
-			List<DongNhac> lists = dongnhacdao.getAllDongNhac();
+
+			List<DongNhac> lists;
+			if (q == null)
+			{
+				lists = dongnhacdao.getAllDongNhac();
+			}
+			else
+			{
+				lists = dongnhacdao.findDongNhacByName(q);
+			}
 			return View(lists);
 		}
 
