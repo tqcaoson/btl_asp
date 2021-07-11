@@ -9,13 +9,14 @@ namespace BaiTapAsp.Controllers
 {
     public class NhacSiController : Controller
     {
+        static List<NhacSi> listNhacSi = new List<NhacSi>();
         // GET: NhacSi
         public ActionResult Index(string name_find)
         {
             if (Session["username"] == null)
                 return Redirect("/Auth/DangNhap");
             NhacSiDAO nhacsidao = new NhacSiDAO();
-            List<NhacSi> listNhacSi = nhacsidao.getAllNhacSi();
+            listNhacSi = nhacsidao.getAllNhacSi();
 
             if (!string.IsNullOrEmpty(name_find))
             {
@@ -30,8 +31,7 @@ namespace BaiTapAsp.Controllers
         // GET: NhacSi/Details/5
         public ActionResult Details(int id)
         {
-            NhacSiDAO nhacsidao = new NhacSiDAO();
-            NhacSi ns = nhacsidao.getNhacSiByID(id);
+            NhacSi ns = listNhacSi.Find(x => x.id == id);
             return View(ns);
         }
 
@@ -46,7 +46,7 @@ namespace BaiTapAsp.Controllers
         [HttpPost]
         public ActionResult Create(NhacSi ns)
         {
-            if (Request.Form.Get("Imageupload") != null)
+            if (ns.image != null)
             {
                   string fileName = Path.GetFileNameWithoutExtension(ns.Imageupload.FileName);
                   string extension = Path.GetExtension(ns.Imageupload.FileName);
@@ -58,7 +58,7 @@ namespace BaiTapAsp.Controllers
                   return RedirectToAction("Index");
             }
             return View();
-            }
+        }
            
 
             
@@ -66,8 +66,7 @@ namespace BaiTapAsp.Controllers
         // GET: NhacSi/Edit/5
         public ActionResult Edit(int id)
         {
-            NhacSiDAO nhacsidao = new NhacSiDAO();
-            NhacSi ns = nhacsidao.getNhacSiByID(id);
+            NhacSi ns = listNhacSi.Find(x => x.id == id);
             return View(ns);
         }
 
@@ -97,8 +96,7 @@ namespace BaiTapAsp.Controllers
         // GET: NhacSi/Delete/5
         public ActionResult Delete(int id)
         {
-            NhacSiDAO nhacsidao = new NhacSiDAO();
-            NhacSi ns = nhacsidao.getNhacSiByID(id);
+            NhacSi ns = listNhacSi.Find(x => x.id == id);
             return View(ns);
         }
 

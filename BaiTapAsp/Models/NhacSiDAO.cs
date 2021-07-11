@@ -65,13 +65,12 @@ namespace BaiTapAsp.Models
         }
         public NhacSi getNhacSiByID (int id)
         {
-            string sql = "select * from Nhac_si where id = " + id;
+            string sql = "select * from Nhac_si where Id = "+ id;
             DataTable dt = new DataTable();
             SqlConnection con = db.getConnection();
             SqlDataAdapter da = new SqlDataAdapter(sql, con);
             con.Open();
             da.Fill(dt);
-            con.Close();
             NhacSi ns;
             int i = 0;
             int ID = Convert.ToInt32(dt.Rows[i]["Id"].ToString());
@@ -81,6 +80,7 @@ namespace BaiTapAsp.Models
             String Hinh = dt.Rows[i]["Hinh"].ToString();
             ns = new NhacSi(ID, fullTen_nhacsi, Hinh, Ngaysinh, Diachi);
 
+            con.Close();
 
             return ns;
 
