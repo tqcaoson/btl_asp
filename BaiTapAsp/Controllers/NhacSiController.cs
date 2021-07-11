@@ -46,11 +46,16 @@ namespace BaiTapAsp.Controllers
         [HttpPost]
         public ActionResult Create(NhacSi ns)
         {
-            if (ns.image != null)
+            if (ModelState.IsValid && ns.image != null)
             {
-                  string fileName = Path.GetFileNameWithoutExtension(ns.Imageupload.FileName);
-                  string extension = Path.GetExtension(ns.Imageupload.FileName);
-                  fileName = fileName + extension;
+                string fileName = Path.GetFileNameWithoutExtension(ns.Imageupload.FileName);
+                string extension = Path.GetExtension(ns.Imageupload.FileName);
+                if (extension != ".jpg" && extension != ".png" && extension != ".jpeg")
+                {
+                    TempData["err"] = "vui lòng chọn ảnh đúng định dạng";
+                    return Redirect("/NhacSi/Create");
+                }
+                fileName = fileName + extension;
                   ns.image = "~/Content/images/" + fileName;
                   ns.Imageupload.SaveAs(Path.Combine(Server.MapPath("~/Content/images/"), fileName));
                   NhacSiDAO nhacsidao = new NhacSiDAO();
@@ -80,6 +85,11 @@ namespace BaiTapAsp.Controllers
                 {
                     string fileName = Path.GetFileNameWithoutExtension(ns.Imageupload.FileName);
                     string extension = Path.GetExtension(ns.Imageupload.FileName);
+                    if (extension != ".jpg" && extension != ".png" && extension != ".jpeg")
+                    {
+                        TempData["err"] = "vui lòng chọn ảnh đúng định dạng";
+                        return Redirect("/NhacSi/Create");
+                    }
                     fileName = fileName + extension;
                     ns.image = "~/Content/images/" + fileName;
                     ns.Imageupload.SaveAs(Path.Combine(Server.MapPath("~/Content/images/"), fileName));

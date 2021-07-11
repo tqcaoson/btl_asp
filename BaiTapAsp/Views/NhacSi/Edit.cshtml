@@ -7,7 +7,7 @@
 
 <h2>Edit</h2>
 
-
+<h2 class="text-danger">@TempData["err"]</h2>
 @using (Html.BeginForm("Edit", "NhacSi", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
