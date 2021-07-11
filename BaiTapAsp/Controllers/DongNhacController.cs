@@ -33,7 +33,10 @@ namespace BaiTapAsp.Controllers
 				return Redirect("/Auth/DangNhap");
 			if (ModelState.IsValid)
 			{
-				dongnhacdao.insertDongNhac(dn);
+				if (!dongnhacdao.insertDongNhac(dn))
+				{
+					@TempData["err"] = "Không thể thêm dòng nhạc này";
+				}
 				return Redirect("/DongNhac");
 			}
 			else
@@ -59,7 +62,10 @@ namespace BaiTapAsp.Controllers
 				return Redirect("/Auth/DangNhap");
 			if (ModelState.IsValid)
 			{
-				dongnhacdao.updateDongNhac(dn);
+				if (!dongnhacdao.updateDongNhac(dn))
+				{
+					@TempData["err"] = "Không thể sửa dòng nhạc này";
+				}
 				return Redirect("/DongNhac");
 			}
 			else
@@ -72,7 +78,10 @@ namespace BaiTapAsp.Controllers
 		{
 			if (Session["username"] == null)
 				return Redirect("/Auth/DangNhap");
-			dongnhacdao.deleteDongNhac(id);
+			if (!dongnhacdao.deleteDongNhac(id))
+			{
+				@TempData["err"] = "Không thể xoá dòng nhạc này";
+			}
 			return Redirect("/DongNhac");
 		}
 	}
