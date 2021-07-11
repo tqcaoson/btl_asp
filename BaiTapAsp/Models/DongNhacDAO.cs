@@ -49,7 +49,7 @@ namespace BaiTapAsp.Models
 			List<DongNhac> listNhacSi = new List<DongNhac>();
 			try
 			{
-				string sql = "select * from Dong_nhac where Ten_dongnhac LIKE '%" + name + "%'";
+				string sql = "select * from Dong_nhac where Ten_dongnhac LIKE N'%" + name + "%'";
 				DataTable dt = new DataTable();
 				SqlConnection con = db.getConnection();
 				SqlDataAdapter da = new SqlDataAdapter(sql, con);

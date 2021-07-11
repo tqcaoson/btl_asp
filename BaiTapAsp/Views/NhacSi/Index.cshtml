@@ -1,4 +1,4 @@
-﻿@*@model IEnumerable<BaiTapAsp.Models.NhacSi>
+﻿@model IEnumerable<BaiTapAsp.Models.NhacSi>
 
 @{
     ViewBag.Title = "Index";
@@ -24,6 +24,10 @@
     </div>
 }
 <br />
+<p>
+    @Html.ActionLink("Create New", "Create")
+    <h2 class="text-danger">@TempData["err"]</h2>
+</p>
 <table class="table">
     <tr>
         <th>
@@ -65,4 +69,4 @@
         </tr>
     }
 
-</table>*@
+</table>

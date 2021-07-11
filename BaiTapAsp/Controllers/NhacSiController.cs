@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -46,21 +46,17 @@ namespace BaiTapAsp.Controllers
         [HttpPost]
         public ActionResult Create(NhacSi ns)
         {
-                if (ModelState.IsValid)
-                {
-                        if (ns.image !=null)
-                        {
-                        string fileName = Path.GetFileNameWithoutExtension(ns.Imageupload.FileName);
-                        string extension = Path.GetExtension(ns.Imageupload.FileName);
-                        fileName = fileName + extension;
-                        ns.image = "~/Content/images/" + fileName;
-                        ns.Imageupload.SaveAs(Path.Combine(Server.MapPath("~/Content/images/"), fileName));
-                        NhacSiDAO nhacsidao = new NhacSiDAO();
-                        nhacsidao.insertNhacSi(ns);
-                        return RedirectToAction("Index");
-                        }
- 
-                }else return View();
+            if (Request.Form.Get("Imageupload") != null)
+            {
+                  string fileName = Path.GetFileNameWithoutExtension(ns.Imageupload.FileName);
+                  string extension = Path.GetExtension(ns.Imageupload.FileName);
+                  fileName = fileName + extension;
+                  ns.image = "~/Content/images/" + fileName;
+                  ns.Imageupload.SaveAs(Path.Combine(Server.MapPath("~/Content/images/"), fileName));
+                  NhacSiDAO nhacsidao = new NhacSiDAO();
+                  nhacsidao.insertNhacSi(ns);
+                  return RedirectToAction("Index");
+            }
             return View();
             }
            
@@ -111,7 +107,13 @@ namespace BaiTapAsp.Controllers
         public ActionResult Delete( NhacSi ns)
         {
             NhacSiDAO nhacsidao = new NhacSiDAO();
-            nhacsidao.deleteNhacSi(ns);
+            if (Session["username"] == null)
+                return Redirect("/Auth/DangNhap");
+            if (!nhacsidao.deleteNhacSi(ns))
+            {
+                @TempData["err"] = "Không thể xoá nhạc sĩ này";
+            }
+            
             return RedirectToAction("Index");
         }
     }

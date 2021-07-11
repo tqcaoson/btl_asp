@@ -29,7 +29,7 @@ namespace BaiTapAsp.Models
             NhacSi ns;
             for (int i = 0; i < dt.Rows.Count; i++)
             {
-                int ID = Convert.ToInt32(dt.Rows[i]["id"].ToString());
+                int ID = Convert.ToInt32(dt.Rows[i]["Id"].ToString());
                 String fullTen_nhacsi = dt.Rows[i]["Ten_nhacsi"].ToString();
                 String Ngaysinh = dt.Rows[i]["Ngaysinh"].ToString();
                 String Diachi = dt.Rows[i]["Diachi"].ToString();
@@ -42,6 +42,7 @@ namespace BaiTapAsp.Models
 
         public void insertNhacSi (NhacSi ns)
         {
+
             string sql = "insert into Nhac_si (Ten_nhacsi, Ngaysinh, Diachi, Hinh) values (N'" + ns.fullName + "', N'" + ns.dateofbirth + "', N'" + ns.address + "', N'" + ns.image + "')";
             SqlConnection con = db.getConnection();
             SqlCommand cmd = new SqlCommand(sql, con);
@@ -73,7 +74,7 @@ namespace BaiTapAsp.Models
             con.Close();
             NhacSi ns;
             int i = 0;
-            int ID = Convert.ToInt32(dt.Rows[i]["id"].ToString());
+            int ID = Convert.ToInt32(dt.Rows[i]["Id"].ToString());
             String fullTen_nhacsi = dt.Rows[i]["Ten_nhacsi"].ToString();
             String Ngaysinh = dt.Rows[i]["Ngaysinh"].ToString();
             String Diachi = dt.Rows[i]["Diachi"].ToString();
@@ -110,15 +111,24 @@ namespace BaiTapAsp.Models
         }
 
 
-        public void deleteNhacSi (NhacSi ns)
+        public bool deleteNhacSi (NhacSi ns)
         {
             string sql = "delete from Nhac_si where id =" + ns.id;
-            SqlConnection con = db.getConnection();
-            SqlCommand cmd = new SqlCommand(sql, con);
-            con.Open();
-            cmd.ExecuteNonQuery();
-            cmd.Dispose();
-            con.Close();
+            try
+            {
+                SqlConnection con = db.getConnection();
+                SqlCommand cmd = new SqlCommand(sql, con);
+                con.Open();
+                cmd.ExecuteNonQuery();
+                return true;
+                cmd.Dispose();
+                con.Close();
+            }
+            catch (SqlException ex)
+            {
+                Console.WriteLine("error deleteDongNhac: " + ex.Message);
+                return false;
+            }
         }
     }
 }
