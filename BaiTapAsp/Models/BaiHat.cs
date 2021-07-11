@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -10,8 +11,11 @@ namespace BaiTapAsp.Models
         public int Id { get; set; }
         public int Id_nhacsi { get; set; }
         public int Id_dongnhac { get; set; }
+        [Required(ErrorMessage = "Vui lòng nhập tên bài hát")]
+        [Display(Name = "Tên nhạc sĩ")]
         public string Ten_bai_hat { get; set; }
         public DateTime NgayDang { get; set; }
+        [Range(0, Int64.MaxValue, ErrorMessage = "Vui lòng nhập lại lượt nghe")]
         public int LuotNghe { get; set; }
 
         public BaiHat ()

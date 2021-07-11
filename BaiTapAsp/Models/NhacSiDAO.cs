@@ -63,6 +63,17 @@ namespace BaiTapAsp.Models
             cmd.Dispose();
             con.Close();
         }
+        public void updateNhacSiWithoutImage(NhacSi ns)
+        {
+            string sql = "update Nhac_si set Ten_nhacsi = N'" + ns.fullName + "', Ngaysinh = N'" + ns.dateofbirth + "', Diachi = N'" + ns.address + "' where id = " + ns.id;
+
+            SqlConnection con = db.getConnection();
+            SqlCommand cmd = new SqlCommand(sql, con);
+            con.Open();
+            cmd.ExecuteNonQuery();
+            cmd.Dispose();
+            con.Close();
+        }
         public NhacSi getNhacSiByID (int id)
         {
             string sql = "select * from Nhac_si where Id = "+ id;
