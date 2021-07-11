@@ -57,8 +57,10 @@ namespace BaiTapAsp.Controllers
                 }
                 fileName = fileName + extension;
                   ns.image = "~/Content/images/" + fileName;
+                // luu len server
                   ns.Imageupload.SaveAs(Path.Combine(Server.MapPath("~/Content/images/"), fileName));
                   NhacSiDAO nhacsidao = new NhacSiDAO();
+    
                   nhacsidao.insertNhacSi(ns);
                   return RedirectToAction("Index");
             }
@@ -79,7 +81,7 @@ namespace BaiTapAsp.Controllers
         [HttpPost]
         public ActionResult Edit(NhacSi ns)
         {
-            if (ModelState.IsValid)
+            if (ns.Imageupload!=null)
             {
                     string fileName = Path.GetFileNameWithoutExtension(ns.Imageupload.FileName);
                     string extension = Path.GetExtension(ns.Imageupload.FileName);
@@ -96,8 +98,13 @@ namespace BaiTapAsp.Controllers
                     return RedirectToAction("Index");
 
             }
-            else return View();
-            return View();
+            else
+            {
+                NhacSiDAO nhacsidao = new NhacSiDAO();
+                nhacsidao.updateNhacSiWithoutImage(ns);
+                return RedirectToAction("Index");
+            }
+          
         }
 
         // GET: NhacSi/Delete/5
