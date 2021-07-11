@@ -19,25 +19,30 @@
 	</div>
 }
 <br />
-<table class="table">
-	<tr>
-		<th>
-			@Html.DisplayNameFor(model => model.TenDongNhac)
-		</th>
-		<th></th>
-	</tr>
 
-	@foreach (var item in Model)
-	{
-		<tr>
-			<td>
-				@Html.DisplayFor(modelItem => item.TenDongNhac)
-			</td>
-			<td>
-				@Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-				@Html.ActionLink("Delete", "Delete", new { id = item.Id })
-			</td>
-		</tr>
-	}
+<div class="card-body">
+    <div class="table-responsive">
+        <table class="table table-bordered" id="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.TenDongNhac)
+                </th>
+                <th></th>
+            </tr>
 
-</table>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TenDongNhac)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
+</div>
