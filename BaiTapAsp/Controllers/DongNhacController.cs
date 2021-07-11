@@ -12,8 +12,8 @@ namespace BaiTapAsp.Controllers
 		DongNhacDAO dongnhacdao = new DongNhacDAO();
 		public ActionResult Index(string q)
 		{
-			if (Session["username"] == null)
-				return Redirect("/Auth/DangNhap");
+			//if (Session["username"] == null)
+			//	return Redirect("/Auth/DangNhap");
 
 			List<DongNhac> lists;
 			if (q == null)
