@@ -42,7 +42,7 @@ namespace BaiTapAsp.Models
 
         public void insertNhacSi (NhacSi ns)
         {
-            string sql = "insert into Nhac_Si (Ten_nhacsi, Ngaysinh, Diachi, Hinh) values (N'" + ns.fullName + "', N'" + ns.dateofbirth + "', N'" + ns.address + "', N'" + ns.image + "')";
+            string sql = "insert into Nhac_si (Ten_nhacsi, Ngaysinh, Diachi, Hinh) values (N'" + ns.fullName + "', N'" + ns.dateofbirth + "', N'" + ns.address + "', N'" + ns.image + "')";
             SqlConnection con = db.getConnection();
             SqlCommand cmd = new SqlCommand(sql, con);
             con.Open();
@@ -53,7 +53,7 @@ namespace BaiTapAsp.Models
 
         public void updateNhacSi (NhacSi ns)
         {
-            string sql = "update Nhac_Si set Ten_nhacsi = N'" + ns.fullName + "', Ngaysinh = N'" + ns.dateofbirth + "', Diachi = N'" + ns.address + "', Hinh = N'" + ns.image + "' where id = " + ns.id;
+            string sql = "update Nhac_si set Ten_nhacsi = N'" + ns.fullName + "', Ngaysinh = N'" + ns.dateofbirth + "', Diachi = N'" + ns.address + "', Hinh = N'" + ns.image + "' where id = " + ns.id;
 
             SqlConnection con = db.getConnection();
             SqlCommand cmd = new SqlCommand(sql, con);
@@ -64,7 +64,7 @@ namespace BaiTapAsp.Models
         }
         public NhacSi getNhacSiByID (int id)
         {
-            string sql = "select * from Nhac_Si where id = " + id;
+            string sql = "select * from Nhac_si where id = " + id;
             DataTable dt = new DataTable();
             SqlConnection con = db.getConnection();
             SqlDataAdapter da = new SqlDataAdapter(sql, con);
@@ -87,7 +87,7 @@ namespace BaiTapAsp.Models
 
         public List<NhacSi> getNhacSiByTen_nhacsi (string Ten_nhacsi)
         {
-            string sql = "select * from Nhac_Si where Ten_nhacsi like '%" + Ten_nhacsi + "%'";
+            string sql = "select * from Nhac_si where Ten_nhacsi like '%" + Ten_nhacsi + "%'";
             List<NhacSi> listNhacSi = new List<NhacSi>();
             DataTable dt = new DataTable();
             SqlConnection con = db.getConnection();
@@ -112,7 +112,7 @@ namespace BaiTapAsp.Models
 
         public void deleteNhacSi (NhacSi ns)
         {
-            string sql = "delete from Nhac_Si where id =" + ns.id;
+            string sql = "delete from Nhac_si where id =" + ns.id;
             SqlConnection con = db.getConnection();
             SqlCommand cmd = new SqlCommand(sql, con);
             con.Open();

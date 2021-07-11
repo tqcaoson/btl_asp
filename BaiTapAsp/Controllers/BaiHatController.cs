@@ -13,8 +13,8 @@ namespace BaiTapAsp.Controllers
         // GET: BaiHat
         public ActionResult showBH()
         {
-            //if (Session["username"] == null)
-            //    return Redirect("/Auth/DangNhap");
+            if (Session["username"] == null)
+                return Redirect("/Auth/DangNhap");
 
             BaiHatDAO bh = new BaiHatDAO();
             NhacSiDAO ns = new NhacSiDAO();
@@ -48,8 +48,8 @@ namespace BaiTapAsp.Controllers
 
         public ActionResult editBH (int id)
         {
-            //if (Session["username"] == null)
-            //    return Redirect("/Auth/DangNhap");
+            if (Session["username"] == null)
+                return Redirect("/Auth/DangNhap");
 
             DongNhacDAO dn = new DongNhacDAO();
             NhacSiDAO ns = new NhacSiDAO();
@@ -81,8 +81,8 @@ namespace BaiTapAsp.Controllers
 
         public ActionResult addBH()
         {
-            //if (Session["username"] == null)
-            //    return Redirect("/Auth/DangNhap");
+            if (Session["username"] == null)
+                return Redirect("/Auth/DangNhap");
 
             DongNhacDAO dn = new DongNhacDAO();
             NhacSiDAO ns = new NhacSiDAO();
@@ -105,8 +105,8 @@ namespace BaiTapAsp.Controllers
 
         public ActionResult DeleteBH(int id)
         {
-            //if (Session["username"] == null)
-            //    return Redirect("/Auth/DangNhap");
+            if (Session["username"] == null)
+                return Redirect("/Auth/DangNhap");
 
             BaiHatDAO baiHat = new BaiHatDAO();
             ViewBag.NameBH = baiHat.getBaiHatByID(id).Ten_bai_hat;

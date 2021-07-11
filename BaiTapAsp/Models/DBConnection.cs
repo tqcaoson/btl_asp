@@ -13,7 +13,7 @@ namespace BaiTapAsp.Models
         string s;
         public DBConnection()
         {
-            s = @"Data Source=DESKTOP-7HOLHB6\SQLEXPRESS;Initial Catalog=WebsiteQuanLy;Integrated Security=True";
+            s = @"Data Source=DESKTOP-KMNS09Q\SQLEXPRESSX;Initial Catalog=QuanLyBaiHat;Integrated Security=True";
             strCon = ConfigurationManager.ConnectionStrings["DBConnect"].ConnectionString;
         }
         public SqlConnection getConnection()

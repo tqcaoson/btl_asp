@@ -2128,6 +2128,8 @@
     <Content Include="Views\Auth\DangKy.cshtml" />
     <Content Include="Views\NhacSi\Create.cshtml" />
     <Content Include="Views\DongNhac\Create.cshtml" />
+    <Content Include="Views\BaiHat\deleteBH.cshtml" />
+    <Content Include="Views\BaiHat\searchBH.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
