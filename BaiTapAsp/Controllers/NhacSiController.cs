@@ -12,12 +12,14 @@ namespace BaiTapAsp.Controllers
         // GET: NhacSi
         public ActionResult Index(string name_find)
         {
+            if (Session["username"] == null)
+                return Redirect("/Auth/DangNhap");
             NhacSiDAO nhacsidao = new NhacSiDAO();
             List<NhacSi> listNhacSi = nhacsidao.getAllNhacSi();
 
             if (!string.IsNullOrEmpty(name_find))
             {
-                listNhacSi = nhacsidao.getNhacSiByName(name_find);
+                listNhacSi = nhacsidao.getNhacSiByTen_nhacsi(name_find);
             }
 
             return View(listNhacSi);
