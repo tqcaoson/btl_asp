@@ -46,7 +46,7 @@ namespace BaiTapAsp.Controllers
         [HttpPost]
         public ActionResult Create(NhacSi ns)
         {
-            if (ModelState.IsValid && ns.image != null)
+            if (ModelState.IsValid)
             {
                 string fileName = Path.GetFileNameWithoutExtension(ns.Imageupload.FileName);
                 string extension = Path.GetExtension(ns.Imageupload.FileName);
@@ -81,8 +81,6 @@ namespace BaiTapAsp.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (ns.image != null)
-                {
                     string fileName = Path.GetFileNameWithoutExtension(ns.Imageupload.FileName);
                     string extension = Path.GetExtension(ns.Imageupload.FileName);
                     if (extension != ".jpg" && extension != ".png" && extension != ".jpeg")
@@ -96,7 +94,6 @@ namespace BaiTapAsp.Controllers
                     NhacSiDAO nhacsidao = new NhacSiDAO();
                     nhacsidao.updateNhacSi(ns);
                     return RedirectToAction("Index");
-                }
 
             }
             else return View();

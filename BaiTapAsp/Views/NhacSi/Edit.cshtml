@@ -30,7 +30,7 @@
             @Html.LabelFor(model => model.image, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 <img src="@Url.Content(Model.image)" style="height:200px; width:200px; margin:10px" id="previewImage" />
-                <input type="file" name="Imageupload" onchange="ShowImagePreview(this, document.getElementById('previewImage'))" />
+                <input type="file" name="Imageupload" required onchange="ShowImagePreview(this, document.getElementById('previewImage'))" />
                 @Html.ValidationMessageFor(model => model.image, "", new { @class = "text-danger" })
             </div>
         </div>
