@@ -43,6 +43,35 @@ namespace BaiTapAsp.Models
 			return listNhacSi;
 		}
 
+		public List<DongNhac> findDongNhacByName(string name)
+		{
+			Console.WriteLine("findDongNhacByName: " + name);
+			List<DongNhac> listNhacSi = new List<DongNhac>();
+			try
+			{
+				string sql = "select * from Dong_nhac where Ten_dongnhac LIKE '%" + name + "%'";
+				DataTable dt = new DataTable();
+				SqlConnection con = db.getConnection();
+				SqlDataAdapter da = new SqlDataAdapter(sql, con);
+				con.Open();
+				da.Fill(dt);
+				con.Close();
+				DongNhac ns;
+				for (int i = 0; i < dt.Rows.Count; i++)
+				{
+					int ID = Convert.ToInt32(dt.Rows[i]["Id"].ToString());
+					String tenDongNhac = dt.Rows[i]["Ten_dongnhac"].ToString();
+					ns = new DongNhac(ID, tenDongNhac);
+					listNhacSi.Add(ns);
+				}
+			}
+			catch (SqlException ex)
+			{
+				Console.WriteLine("error findDongNhacByName: " + ex.Message);
+			}
+			return listNhacSi;
+		}
+
 		public bool insertDongNhac(DongNhac dn)
 		{
 			string sql = "insert into Dong_nhac (Ten_dongnhac) values (N'" + dn.TenDongNhac + "')";

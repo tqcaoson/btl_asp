@@ -1,8 +1,8 @@
 ﻿@model IEnumerable<BaiTapAsp.Models.DongNhac>
 
 @{
-    ViewBag.Title = "Danh sách dòng nhạc";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+	ViewBag.Title = "Danh sách dòng nhạc";
+	Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2>Index</h2>
@@ -11,24 +11,33 @@
 	@Html.ActionLink("Create New", "Create")
 	<h2 class="text-danger">@TempData["err"]</h2>
 </p>
-<table class="table table-bordered" id="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.TenDongNhac)
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.TenDongNhac)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
-    </tr>
+@using (Html.BeginForm("Index", "DongNhac", FormMethod.Get))
+{
+	<div style="margin-left:850px;">
+		<input type="text" name="q" placeholder="Nhập tên dòng nhạc" />
+		<input type="submit" value="Tìm Kiếm" />
+	</div>
 }
+<br />
+<table class="table">
+	<tr>
+		<th>
+			@Html.DisplayNameFor(model => model.TenDongNhac)
+		</th>
+		<th></th>
+	</tr>
+
+	@foreach (var item in Model)
+	{
+		<tr>
+			<td>
+				@Html.DisplayFor(modelItem => item.TenDongNhac)
+			</td>
+			<td>
+				@Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+				@Html.ActionLink("Delete", "Delete", new { id = item.Id })
+			</td>
+		</tr>
+	}
 
 </table>
