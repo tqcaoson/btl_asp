@@ -13,6 +13,8 @@ namespace BaiTapAsp.Controllers
         // GET: BaiHat
         public ActionResult showBH()
         {
+            //if (Session["username"] == null)
+            //    return Redirect("/Auth/DangNhap");
 
             BaiHatDAO bh = new BaiHatDAO();
             NhacSiDAO ns = new NhacSiDAO();
@@ -46,6 +48,9 @@ namespace BaiTapAsp.Controllers
 
         public ActionResult editBH (int id)
         {
+            //if (Session["username"] == null)
+            //    return Redirect("/Auth/DangNhap");
+
             DongNhacDAO dn = new DongNhacDAO();
             NhacSiDAO ns = new NhacSiDAO();
             BaiHatDAO da = new BaiHatDAO();
@@ -59,12 +64,26 @@ namespace BaiTapAsp.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult editBH (BaiHat bh) {
+            BaiHatDAO da = new BaiHatDAO();
+            if (bh.Id > 0)
+            {
+                BaiHat baiHat = da.getBaiHatByID(bh.Id);
+                if(baiHat != null)
+                {
+                    da.UpdateBH(bh);
+                    return RedirectToAction("showBH");
+                }
+            }
             return View();
         }
 
         public ActionResult addBH()
         {
+            //if (Session["username"] == null)
+            //    return Redirect("/Auth/DangNhap");
+
             DongNhacDAO dn = new DongNhacDAO();
             NhacSiDAO ns = new NhacSiDAO();
             List<DongNhac> dongnhac = dn.getAllDongNhac();
@@ -75,16 +94,32 @@ namespace BaiTapAsp.Controllers
             return View();
         }
 
+        
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult addBH (BaiHat bh) {
             BaiHatDAO baiHat = new BaiHatDAO();
             baiHat.insertBH(bh);
             return RedirectToAction("showBH");
         }
 
-        public ActionResult deleteBH(int id)
+        public ActionResult DeleteBH(int id)
         {
-            return View();
+            //if (Session["username"] == null)
+            //    return Redirect("/Auth/DangNhap");
+
+            BaiHatDAO baiHat = new BaiHatDAO();
+            ViewBag.NameBH = baiHat.getBaiHatByID(id).Ten_bai_hat;
+            return View(baiHat.getBaiHatByID(id));
+        }
+
+        
+        [HttpPost]
+        public ActionResult DeleteBH(BaiHat bh)
+        {           
+            BaiHatDAO baiHat = new BaiHatDAO();
+            baiHat.Delete(bh.Id);
+            return RedirectToAction("showBH");
         }
     }
 }

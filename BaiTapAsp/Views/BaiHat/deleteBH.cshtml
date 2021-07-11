@@ -1,0 +1,21 @@
+﻿@model BaiTapAsp.Models.BaiHat
+
+@{
+    ViewBag.Title = "deleteBH";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>deleteBH</h2>
+
+<h3>Bạn có chắc chắn muốn xóa bài hát : @ViewBag.NameBH</h3>
+<div>
+    <hr />
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "showBH")
+        </div>
+    }
+</div>
