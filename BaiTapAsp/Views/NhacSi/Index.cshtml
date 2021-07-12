@@ -11,15 +11,15 @@
 </style>
 
 
-<h2>Index</h2>
+<h2>Danh sách nhạc sĩ</h2>
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
 @using (Html.BeginForm("Index", "NhacSi", FormMethod.Post))
 {
     <div style="margin-left:850px;">
-        <input type="text" name="name_find" placeholder="Nhập tên nhạc sĩ" />
-        <input type="submit" value="Tìm Kiếm" />
+        <input type="text" name="name_find" class="form-control" placeholder="Nhập tên nhạc sĩ" />
+        <input type="submit" value="Tìm Kiếm" class="btn" />
     </div>
 }
 <br />
@@ -42,7 +42,7 @@
                 <th>
                     @Html.DisplayNameFor(model => model.address)
                 </th>
-                <th></th>
+                <th>Hành động</th>
             </tr>
 
             @foreach (var item in Model)
@@ -62,9 +62,9 @@
                         @Html.DisplayFor(modelItem => item.address)
                     </td>
                     <td>
-                        @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
-                        @Html.ActionLink("Details", "Details", new { id = item.id }) |
-                        @Html.ActionLink("Delete", "Delete", new { id = item.id })
+                        @Html.ActionLink("Edit", "Edit", new { id = item.id }, new { @class = "btn" }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.id }, new { @class = "btn" }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.id }, new { @class = "btn" })
                     </td>
                 </tr>
             }

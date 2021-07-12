@@ -5,17 +5,17 @@
 	Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Danh sách dòng nhạc</h2>
 
 <p>
-	@Html.ActionLink("Create New", "Create")
+	@Html.ActionLink("Create New", "Create", new { @class = "btn" })
 	<h2 class="text-danger">@TempData["err"]</h2>
 </p>
 @using (Html.BeginForm("Index", "DongNhac", FormMethod.Get))
 {
 	<div style="margin-left:850px;">
-		<input type="text" name="q" placeholder="Nhập tên dòng nhạc" />
-		<input type="submit" value="Tìm Kiếm" />
+		<input type="text" name="q" class="form-control" placeholder="Nhập tên dòng nhạc" />
+		<input type="submit" value="Tìm Kiếm" class="btn" />
 	</div>
 }
 <br />
@@ -27,7 +27,7 @@
                 <th>
                     @Html.DisplayNameFor(model => model.TenDongNhac)
                 </th>
-                <th></th>
+                <th>Hành động</th>
             </tr>
 
             @foreach (var item in Model)
@@ -37,8 +37,8 @@
                         @Html.DisplayFor(modelItem => item.TenDongNhac)
                     </td>
                     <td>
-                        @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                        @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                        @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "btn" }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn" })
                     </td>
                 </tr>
             }

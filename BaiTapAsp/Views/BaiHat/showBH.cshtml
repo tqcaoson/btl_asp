@@ -7,7 +7,7 @@
 <h2>Hiển thị bài hát</h2>
 
 <p>
-    @Html.ActionLink("Thêm bài hát mới", "addBH")
+    @Html.ActionLink("Thêm bài hát mới", "addBH", new { @class = "btn" })
 </p>
 
 <div class="card-body">
@@ -30,7 +30,7 @@
                     <th>
                         Lượt nghe
                     </th>
-                    <th></th>
+                    <th>Hành động</th>
                 </tr>
             </thead>
             <tbody>
@@ -53,8 +53,8 @@
                             @Html.DisplayFor(modelItem => item.LuotNghe)
                         </td>
                         <td>
-                            @Html.ActionLink("Edit", "editBH", new { id = item.Id }) |
-                            @Html.ActionLink("Delete", "deleteBH", new { id = item.Id })
+                            @Html.ActionLink("Edit", "editBH", new { id = item.Id }, new { @class = "btn" }) |
+                            @Html.ActionLink("Delete", "deleteBH", new { id = item.Id }, new { @class = "btn" })
                         </td>
                     </tr>
                 }
