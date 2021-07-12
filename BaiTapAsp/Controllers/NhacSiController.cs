@@ -50,7 +50,8 @@ namespace BaiTapAsp.Controllers
             {
                 string fileName = Path.GetFileNameWithoutExtension(ns.Imageupload.FileName);
                 string extension = Path.GetExtension(ns.Imageupload.FileName);
-                if (extension != ".jpg" && extension != ".png" && extension != ".jpeg")
+                if (extension != ".jpg" && extension != ".png" && extension != ".jpeg"
+                    && extension != ".JPG" && extension != ".PNG" && extension != ".JPEG")
                 {
                     TempData["err"] = "vui lòng chọn ảnh đúng định dạng";
                     return Redirect("/NhacSi/Create");
@@ -85,9 +86,10 @@ namespace BaiTapAsp.Controllers
             {
                     string fileName = Path.GetFileNameWithoutExtension(ns.Imageupload.FileName);
                     string extension = Path.GetExtension(ns.Imageupload.FileName);
-                    if (extension != ".jpg" && extension != ".png" && extension != ".jpeg")
+                    if (extension != ".jpg" && extension != ".png" && extension != ".jpeg"
+                        && extension != ".JPG" && extension != ".PNG" && extension != ".JPEG")
                     {
-                        TempData["err"] = "vui lòng chọn ảnh đúng định dạng";
+                    TempData["err"] = "vui lòng chọn ảnh đúng định dạng";
                         return Redirect("/NhacSi/Create");
                     }
                     fileName = fileName + extension;
